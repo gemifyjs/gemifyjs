@@ -24,6 +24,7 @@ gem 'jquery-rails'
 gem 'quiet_assets'
 gem 'thin'
 gem 'octokit'
+gem 'carrierwave'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

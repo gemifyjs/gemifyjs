@@ -1,4 +1,4 @@
-<%= form_for(@jem) do |f| %>
+<%= form_for(@jem, :html => {:multipart => true}) do |f| %>
   <% if @jem.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@jem.errors.count, "error") %> prohibited this jem from being saved:</h2>
@@ -19,6 +19,9 @@
     <%= f.label :description %><br />
     <%= f.text_field :description %>
   </div>
+  <p>
+    <%= f.file_field :js %>
+  </p>
   <div class="actions">
     <%= f.submit %>
   </div>
