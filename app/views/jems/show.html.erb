@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @jem.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @jem.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_jem_path(@jem) %> |
+<%= link_to 'Back', jems_path %>
