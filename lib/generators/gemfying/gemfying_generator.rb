@@ -8,6 +8,7 @@ class GemfyingGenerator < Rails::Generators::NamedBase
     template "engine.rb.erb", File.join(target, "lib/#{file_name}-rails/engine.rb")
     template "version.rb.erb", File.join(target, "lib/#{file_name}-rails/version.rb")
     template "railtie.rb.erb", File.join(target, "lib/#{file_name}-rails/railtie.rb")
+    template "versioncontrol.rb.erb", File.join(target, "lib/#{file_name}-rails.rb")
 
     # template "testing.html.erb", "#{file_name}-rails/testing.html.erb"
   end

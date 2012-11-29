@@ -1,0 +1,11 @@
+require "<%= name_constant.downcase %>-rails/version"
+
+module <%= name_constant %>
+  module Rails
+    if ::Rails.version < "3.1"
+      require "<%= name_constant.downcase %>-rails/railtie"
+    else
+      require "<%= name_constant.downcase %>-rails/engine"
+    end
+  end
+end
