@@ -25,7 +25,7 @@ gem 'quiet_assets'
 gem 'thin'
 gem 'octokit'
 gem 'carrierwave'
-
+gem 'thor'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
