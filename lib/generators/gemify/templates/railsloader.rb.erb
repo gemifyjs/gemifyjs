@@ -1,0 +1,11 @@
+require "<%= jem.name %>/version"
+
+module <%= name_for_class %>
+  module Rails
+    if ::Rails.version < "3.1"
+      require "<%= jem.name %>/railtie"
+    else
+      require "<%= jem.name %>/engine"
+    end
+  end
+end

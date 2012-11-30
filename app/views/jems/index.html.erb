@@ -10,7 +10,7 @@
 
 <% @jems.each do |jem| %>
   <tr>
-    <td><%= jem.name %></td>
+    <td><%= jem.base_name %></td>
     <td><%= jem.description %></td>
     <td><%= link_to 'Show', jem %></td>
     <td><%= link_to 'Edit', edit_jem_path(jem) %></td>

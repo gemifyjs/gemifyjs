@@ -1,4 +1,4 @@
-class GemfyingGenerator < Rails::Generators::NamedBase
+class GemifyGenerator < Rails::Generators::NamedBase
   source_root File.expand_path('../templates', __FILE__)
   # argument :file, :type => :string, :required => true
 
@@ -8,24 +8,24 @@ class GemfyingGenerator < Rails::Generators::NamedBase
 
   def generate_layout
     # create necessary files
-    target = File.join(Dir.pwd, "jems/#{jem_name}")
-    template "engine.rb.erb", File.join(target, "lib/#{jem_name}/engine.rb")
-    template "version.rb.erb", File.join(target, "lib/#{jem_name}/version.rb")
-    template "railtie.rb.erb", File.join(target, "lib/#{jem_name}/railtie.rb")
-    template "railsloader.rb.erb", File.join(target, "lib/#{jem_name}.rb")
-    template "gemspec.rb.erb", File.join(target, "#{name}.gemspec")
+    target = File.join(Dir.pwd, "jems/#{jem.name}")
+    template "engine.rb.erb", File.join(target, "lib/#{jem.name}/engine.rb")
+    template "version.rb.erb", File.join(target, "lib/#{jem.name}/version.rb")
+    template "railtie.rb.erb", File.join(target, "lib/#{jem.name}/railtie.rb")
+    template "railsloader.rb.erb", File.join(target, "lib/#{jem.name}.rb")
+    template "gemspec.rb.erb", File.join(target, "#{jem.name}.gemspec")
 
     # copy provided javascript into this directory
     # FileUtils.mkdir_p(File.join(target, 'vendor/assets/javascripts'))
     # copy_file file, File.join(target, "vendor/assets/javascripts/#{file_name}.js")
     repo = create_repo
 
-    push_repo(repo, "jems/#{jem_name}")
+    push_repo(repo, "jems/#{jem.name}")
   end
 
   def create_repo
     client = Octokit::Client.new(:login => ENV["GITHUB_EMAIL"], :password => ENV["GITHUB_PASSWORD"])
-    client.create_repository("#{jem_name}")
+    client.create_repository("#{jem.name}")
   end
 
   def push_repo(repo, directory_path)
@@ -41,14 +41,11 @@ class GemfyingGenerator < Rails::Generators::NamedBase
   private
 
   def name_for_class
-    name.capitalize
+    jem.name.capitalize
   end
 
-  def jem_name
-    "#{name}-rails"
+  def jem
+    Jem.find(name.to_i)
   end
 
-  # def jem
-  #   Jem.find(name)
-  # end
 end
