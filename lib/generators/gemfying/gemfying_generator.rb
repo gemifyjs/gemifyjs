@@ -13,6 +13,7 @@ class GemfyingGenerator < Rails::Generators::NamedBase
     template "version.rb.erb", File.join(target, "lib/#{file_name}-rails/version.rb")
     template "railtie.rb.erb", File.join(target, "lib/#{file_name}-rails/railtie.rb")
     template "railsloader.rb.erb", File.join(target, "lib/#{file_name}-rails.rb")
+    template "gemspec.rb.erb", File.join(target, "#{file_name}.gemspec")
 
     # copy provided javascript into this directory
     # FileUtils.mkdir_p(File.join(target, 'vendor/assets/javascripts'))
