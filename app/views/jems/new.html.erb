@@ -15,6 +15,9 @@
       unique_names : true,
       multipart: true,
       preinit: attachCallbacks,
+      filters : [
+        {title : "Javascript files", extensions : "js"}
+      ],
       multipart_params: {
        "authenticity_token" : '<%= form_authenticity_token %>'
       },
