@@ -9,6 +9,8 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
+ENV.update YAML.load(File.read(File.expand_path('../github.yml', __FILE__)))
+
 module Gemifyjs
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
