@@ -12,4 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
+//= require plupload
+//= require plupload.settings     
+//= require jquery.plupload.queue 
+//= require plupload.flash        
+//= require plupload.html5        
+//= require plupload.gears        
+//= require plupload.browserplus
 //= require_tree .

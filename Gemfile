@@ -26,6 +26,7 @@ gem 'thin'
 gem 'octokit'
 gem 'carrierwave'
 gem 'thor'
+gem 'plupload-rails'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

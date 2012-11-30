@@ -2,4 +2,34 @@
 
 <%= render 'form' %>
 
+<div id='uploader' style='width: 800px;'>
+  Click
+</div>
+
+<%= javascript_tag do %>
+  $(function(){
+    var uploader = $('#uploader').pluploadQueue({
+      runtimes : "html5, gears,flash,silverlight,browserplus",
+      max_image_size : '100mb',
+      url : "/jems",
+      unique_names : true,
+      multipart: true,
+      preinit: attachCallbacks,
+      multipart_params: {
+       "authenticity_token" : '<%= form_authenticity_token %>'
+      },
+      flash_swf_url : '/plupload/js/plupload.flash.swf',
+      silverlight_xap_url : '/plupload/js/plupload.silverlight.xap'
+    }); //end initial script
+    //redirect after complete
+    function attachCallbacks(uploader) {
+      uploader.bind('FileUploaded', function(Up, File, Response) {
+        if( (uploader.total.uploaded + 1) == uploader.files.length) {
+        }
+      })
+    }
+  }); //end function
+<% end %>
+
+
 <%= link_to 'Back', jems_path %>
