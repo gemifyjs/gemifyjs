@@ -25,7 +25,7 @@ class GemfyingGenerator < Rails::Generators::NamedBase
 
   def create_repo
     client = Octokit::Client.new(:login => ENV["GITHUB_EMAIL"], :password => ENV["GITHUB_PASSWORD"])
-    client.create_repository(file_name)
+    client.create_repository("#{file_name}-rails")
   end
 
   def push_repo(repo, directory_path)
