@@ -1,10 +1,10 @@
 # -*- encoding: utf-8 -*-
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require '<%= file_name %>/version'
+require '<%= file_name %>-rails/version'
 
 Gem::Specification.new do |gem|
-  gem.name          = <%=file_name.inspect%>
+  gem.name          = <%=file_name.inspect%>-rails
   gem.version       = <%=name_constant%>::VERSION
   gem.authors       = ["test author"]
   gem.email         = ["test_email"]
