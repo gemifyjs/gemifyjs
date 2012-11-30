@@ -44,7 +44,7 @@ class JemsController < ApplicationController
 
     respond_to do |format|
       if @jem.save
-        %x[rake gemify]
+        %x[rails generate gemfying #{@jem.name}]
         format.html { redirect_to @jem, notice: 'Jem was successfully created.' }
         format.json { render json: @jem, status: :created, location: @jem }
       else

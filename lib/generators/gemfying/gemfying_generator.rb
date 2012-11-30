@@ -1,6 +1,6 @@
 class GemfyingGenerator < Rails::Generators::NamedBase
   source_root File.expand_path('../templates', __FILE__)
-  argument :file, :type => :string, :required => true
+  # argument :file, :type => :string, :required => true
 
   def source_paths
     [File.expand_path('../templates', __FILE__), Dir.pwd]
@@ -15,8 +15,8 @@ class GemfyingGenerator < Rails::Generators::NamedBase
     template "railsloader.rb.erb", File.join(target, "lib/#{file_name}-rails.rb")
 
     # copy provided javascript into this directory
-    FileUtils.mkdir_p(File.join(target, 'vendor/assets/javascripts'))
-    copy_file file, File.join(target, "vendor/assets/javascripts/#{file_name}.js")
+    # FileUtils.mkdir_p(File.join(target, 'vendor/assets/javascripts'))
+    # copy_file file, File.join(target, "vendor/assets/javascripts/#{file_name}.js")
   end
 
   private
