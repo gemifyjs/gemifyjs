@@ -1,3 +1,4 @@
+
 class GemifyGenerator < Rails::Generators::NamedBase
   source_root File.expand_path('../templates', __FILE__)
   # argument :file, :type => :string, :required => true
@@ -6,7 +7,7 @@ class GemifyGenerator < Rails::Generators::NamedBase
     [File.expand_path('../templates', __FILE__), Dir.pwd]
   end
 
-  def generate_layout
+  def generate_files
     # create necessary files
     target = File.join(Dir.pwd, "jems/#{jem.name}")
     template "engine.rb.erb", File.join(target, "lib/#{jem.name}/engine.rb")
@@ -14,6 +15,8 @@ class GemifyGenerator < Rails::Generators::NamedBase
     template "railtie.rb.erb", File.join(target, "lib/#{jem.name}/railtie.rb")
     template "railsloader.rb.erb", File.join(target, "lib/#{jem.name}.rb")
     template "gemspec.rb.erb", File.join(target, "#{jem.name}.gemspec")
+    template "README.md.tt", File.join(target, "README.md")
+
 
     # copy provided javascript into this directory
     # FileUtils.mkdir_p(File.join(target, 'vendor/assets/javascripts'))
@@ -21,6 +24,13 @@ class GemifyGenerator < Rails::Generators::NamedBase
     repo = create_repo
 
     push_repo(repo, "jems/#{jem.name}")
+
+    Dir.chdir(target) do
+      version = "0.0.1"
+      `pwd`
+      `gem build #{jem.name}.gemspec`
+      `gem push -k #{ENV["RUBYGEMS_API_KEY"]} #{target}/#{jem.name}-#{version}.gem`
+    end
   end
 
   def create_repo
@@ -41,7 +51,7 @@ class GemifyGenerator < Rails::Generators::NamedBase
   private
 
   def name_for_class
-    jem.name.capitalize
+    jem.base_name.capitalize
   end
 
   def jem

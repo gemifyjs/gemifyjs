@@ -1,5 +1,4 @@
 require File.expand_path('../boot', __FILE__)
-
 require 'rails/all'
 
 if defined?(Bundler)
@@ -10,6 +9,7 @@ if defined?(Bundler)
 end
 
 ENV.update YAML.load(File.read(File.expand_path('../github.yml', __FILE__)))
+ENV.update YAML.load(File.read(File.expand_path('../rubygems.yml', __FILE__)))
 
 module Gemifyjs
   class Application < Rails::Application
