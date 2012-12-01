@@ -11,7 +11,7 @@
     var uploader = $('#uploader').pluploadQueue({
       runtimes : "html5, gears,flash,silverlight,browserplus",
       max_image_size : '100mb',
-      url : "/jems",
+      url : "/jems/<%= @jem.name %>",
       unique_names : true,
       multipart: true,
       preinit: attachCallbacks,
