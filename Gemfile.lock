@@ -89,8 +89,6 @@ GEM
     plupload-rails (1.0.6)
       rails (~> 3.1)
     polyglot (0.3.3)
-    quiet_assets (1.0.1)
-      railties (~> 3.1)
     rack (1.4.1)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -157,7 +155,6 @@ DEPENDENCIES
   less-rails
   octokit
   plupload-rails
-  quiet_assets
   rails (= 3.2.8)
   sass-rails (~> 3.2.3)
   sqlite3
