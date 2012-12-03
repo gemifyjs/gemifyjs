@@ -19,7 +19,7 @@ role :db,  "96.8.123.99", :primary => true # This is where Rails migrations will
 # if you want to clean up old releases on each deploy uncomment this:
 # after "deploy:restart", "deploy:cleanup"
 after "deploy:finalize_update", "config:github"
-after "deploy:finalize_update", "config.rubygems"
+after "deploy:finalize_update", "config:rubygems"
 # if you're still using the script/reaper helper you will need
 # these http://github.com/rails/irs_process_scripts
 
