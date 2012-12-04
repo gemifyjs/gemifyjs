@@ -17,7 +17,7 @@ class GemifyGenerator < Rails::Generators::NamedBase
 
     repo = GithubService.create_remote_repo(jem.name)
 
-    GithubService.push_repo("jems/#{jem.name}", repo.ssh_url)
+    GithubService.push_local_repo("jems/#{jem.name}", repo.ssh_url)
 
     Dir.chdir(target) do
       RubyGemService.create_gem(jem.name, "#{target}/#{jem.name}-#{version}.gem")
