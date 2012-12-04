@@ -1,24 +1,26 @@
-<h1>Listing jems</h1>
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<div class="hero-unit">
+  <h2>Welcome to GemifyJS</h2>
+  <h4>Sharing Javascript just got easier</h4>
+</div>
 
-<% @jems.each do |jem| %>
-  <tr>
-    <td><%= jem.base_name %></td>
-    <td><%= jem.description %></td>
-    <td><%= link_to 'Show', jem %></td>
-    <td><%= link_to 'Edit', edit_jem_path(jem) %></td>
-    <td><%= link_to 'Destroy', jem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+<div class="row">
 
-<br />
+  <div class="thumbnail span4">
+    <%= link_to image_tag('/assets/add.png'), new_jem_path %>
+    <h3>Make a new gem</h3>
+    <p>Upload a Javascript and create a gem seamlessly</p>
+  </div>
 
-<%= link_to 'New Jem', new_jem_path %>
+  <div class="thumbnail  span4">
+    <%= link_to image_tag('/assets/github-octocat.png'), "http://www.github.com/gemifyjs/gemifyjs" %>
+    <h3>Check us out on GitHub</h3>
+    <p>Contribute to the project and help the community</p>
+  </div>
+
+  <div class="thumbnail span4">
+    <%= link_to image_tag('/assets/rubygems.png'), "https://rubygems.org/profiles/64152" %>  
+    <h3>See all gems on RubyGems</h3>
+    <p>Find all gems created by GemifyJS</p>
+  </div>
+  
+</div>
