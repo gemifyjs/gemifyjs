@@ -12,24 +12,24 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :base_name %><br />
+    <%= f.label :base_name, "Javascript name" %><br />
     <%= f.text_field :base_name %>
   </div>
   <div class="field">
     <%= f.label :author %><br />
-    <%= f.text_field :author %>
+    <%= f.text_field :author, :placeholder => "ex. Alan Turing" %>
   </div>
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.text_field :email %>
+    <%= f.text_field :email, :placeholder => "ex. dennis.ritchie@c.com" %>
   </div>
     <div class="field">
     <%= f.label :description %><br />
-    <%= f.text_area :description %>
+    <%= f.text_area :description, :placeholder => "Feel free to explain in depth what your script does" %>
   </div>
   <div class="field">
     <%= f.label :summary %><br />
-    <%= f.text_area :summary %>
+    <%= f.text_area :summary, :placeholder => "Keep it brief" %>
   </div>
   <div class="field">
     <%= f.label :homepage %><br />
