@@ -10,6 +10,5 @@
   <%= @jem.description %>
 </p>
 
-
-<%= link_to 'Edit', edit_jem_path(@jem) %> |
-<%= link_to 'Back', jems_path %>
+<%= link_to "Check it out on Github!", "https://github.com/gemifyjs/#{@jem.name}" %> <br />
+<%= link_to "Check it out on Rubygems!", "https://rubygems.org/gems/#{@jem.name}" %>
