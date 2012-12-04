@@ -20,7 +20,7 @@ Or install it yourself as:
 
 Add this line to your `application.js` file:
 
-    //= require <%= jem.name %>
+    //= require <%= jem.js.file.filename.split('.')[0] %>
 
 ## Contributing
 

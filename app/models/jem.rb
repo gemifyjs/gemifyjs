@@ -1,3 +1,6 @@
+# don't know where to require this
+require 'carrierwave/orm/activerecord'
+
 class Jem < ActiveRecord::Base
   attr_accessible :description, :base_name, :js, :author, :email, :summary, :homepage, :name
   

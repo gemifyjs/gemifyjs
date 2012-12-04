@@ -1,7 +1,5 @@
-
 class GemifyGenerator < Rails::Generators::NamedBase
   source_root File.expand_path('../templates', __FILE__)
-  # argument :file, :type => :string, :required => true
 
   def source_paths
     [File.expand_path('../templates', __FILE__), Dir.pwd]
@@ -17,39 +15,16 @@ class GemifyGenerator < Rails::Generators::NamedBase
     template "gemspec.rb.erb", File.join(target, "#{jem.name}.gemspec")
     template "README.md.tt", File.join(target, "README.md")
 
+    repo = GithubService.create_remote_repo(jem.name)
 
-    # copy provided javascript into this directory
-    # FileUtils.mkdir_p(File.join(target, 'vendor/assets/javascripts'))
-    # copy_file file, File.join(target, "vendor/assets/javascripts/#{file_name}.js")
-    repo = create_repo
-
-    push_repo(repo, "jems/#{jem.name}")
+    GithubService.push_repo("jems/#{jem.name}", repo.ssh_url)
 
     Dir.chdir(target) do
-      version = "0.0.1"
-      `pwd`
-      `gem build #{jem.name}.gemspec`
-      `gem push -k #{ENV["RUBYGEMS_API_KEY"]} #{target}/#{jem.name}-#{version}.gem`
-    end
-  end
-
-  def create_repo
-    client = Octokit::Client.new(:login => ENV["GITHUB_EMAIL"], :password => ENV["GITHUB_PASSWORD"])
-    client.create_repository("#{jem.name}")
-  end
-
-  def push_repo(repo, directory_path)
-    Dir.chdir(directory_path) do
-      `git init`
-      `git add .`
-      `git commit -m "initial commit"`
-      `git remote add origin #{repo.ssh_url.gsub("github.com", "gemify")}`
-      `git push origin master`
+      RubyGemService.create_gem(jem.name, "#{target}/#{jem.name}-#{version}.gem")
     end
   end
 
   private
-
   def name_for_class
     jem.base_name.capitalize
   end
@@ -57,5 +32,4 @@ class GemifyGenerator < Rails::Generators::NamedBase
   def jem
     Jem.find(name.to_i)
   end
-
 end
