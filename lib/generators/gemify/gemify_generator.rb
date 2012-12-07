@@ -15,14 +15,14 @@ class GemifyGenerator < Rails::Generators::NamedBase
     template "gemspec.rb.erb", File.join(target, "#{jem.name}.gemspec")
     template "README.md.tt", File.join(target, "README.md")
 
-    repo = GithubService.create_remote_repo(jem.name)
+    repo = GithubService.create_repository(jem.name)
+    GithubService.add_collaborator(repo.full_name, jem.creator.login)
+    # GithubService.push_local_repo("jems/#{jem.name}", repo.ssh_url)
 
-    GithubService.push_local_repo("jems/#{jem.name}", repo.ssh_url)
-
-    Dir.chdir(target) do
-      version = "0.0.1"
-      RubyGemService.create_gem(jem.name, "#{target}/#{jem.name}-#{version}.gem")
-    end
+    # Dir.chdir(target) do
+    #   version = "0.0.1"
+    #   RubyGemService.create_gem(jem.name, "#{target}/#{jem.name}-#{version}.gem")
+    # end
   end
 
   private

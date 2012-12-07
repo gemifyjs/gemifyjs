@@ -40,7 +40,7 @@ class JemsController < ApplicationController
   # POST /jems
   # POST /jems.json
   def create
-    @jem = Jem.new(params[:jem])
+    @jem = Jem.new(params[:jem].merge({:user_id => current_user.id}))
 
     respond_to do |format|
       if @jem.save

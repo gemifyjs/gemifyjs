@@ -2,8 +2,11 @@
 require 'carrierwave/orm/activerecord'
 
 class Jem < ActiveRecord::Base
-  attr_accessible :description, :base_name, :js, :author, :email, :summary, :homepage, :name
-  
+  attr_accessible :description, :base_name, :js, :author, :email, :summary, :homepage, :name, :user_id
+
+  belongs_to :user
+  alias :creator :user
+
   before_create :normalize_values
 
   mount_uploader :js, JsUploader
