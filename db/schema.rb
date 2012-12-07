@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121130195719) do
+ActiveRecord::Schema.define(:version => 20121207175033) do
 
   create_table "jems", :force => true do |t|
     t.string   "base_name"
@@ -23,6 +23,15 @@ ActiveRecord::Schema.define(:version => 20121130195719) do
     t.string   "email"
     t.text     "summary",     :limit => 255
     t.string   "homepage"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
+    t.string   "email"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end

@@ -32,6 +32,7 @@ gem 'carrierwave'
 gem 'thor'
 gem 'plupload-rails'
 gem 'quiet_assets', :group => :development
+gem 'omniauth-github'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

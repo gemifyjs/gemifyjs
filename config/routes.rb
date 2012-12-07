@@ -1,6 +1,10 @@
 Gemifyjs::Application.routes.draw do
   resources :jems
 
+  get '/login' => 'sessions#new', :as => 'login'
+  get '/logout' => 'sessions#destroy', :as => 'logout'
+  match '/auth/github/callback' => 'sessions#create'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
