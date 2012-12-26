@@ -17,12 +17,12 @@ class GemifyGenerator < Rails::Generators::NamedBase
 
     repo = GithubService.create_repository(jem.name)
     GithubService.add_collaborator(repo.full_name, jem.creator.login)
-    # GithubService.push_local_repo("jems/#{jem.name}", repo.ssh_url)
+    GithubService.push_local_repo("jems/#{jem.name}", repo.ssh_url)
 
-    # Dir.chdir(target) do
-    #   version = "0.0.1"
-    #   RubyGemService.create_gem(jem.name, "#{target}/#{jem.name}-#{version}.gem")
-    # end
+    Dir.chdir(target) do
+      version = "0.0.1"
+      RubyGemService.create_gem(jem.name, "#{target}/#{jem.name}-#{version}.gem")
+    end
   end
 
   private
