@@ -20,6 +20,7 @@ role :db,  "96.8.123.99", :primary => true # This is where Rails migrations will
 # after "deploy:restart", "deploy:cleanup"
 after "deploy:finalize_update", "config:github"
 after "deploy:finalize_update", "config:rubygems"
+after "deploy", "deploy:migrate"
 
 # if you're still using the script/reaper helper you will need
 # these http://github.com/rails/irs_process_scripts
