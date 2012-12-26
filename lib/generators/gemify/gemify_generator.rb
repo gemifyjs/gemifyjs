@@ -7,7 +7,7 @@ class GemifyGenerator < Rails::Generators::NamedBase
   end
 
   def generate_files
-    logger.debug "generate_files"
+    logger.info "generate_files"
     # create necessary files
     target = File.join(Dir.pwd, "jems/#{jem.name}")
     template "engine.rb.erb", File.join(target, "lib/#{jem.name}/engine.rb")
@@ -17,11 +17,11 @@ class GemifyGenerator < Rails::Generators::NamedBase
     template "gemspec.rb.erb", File.join(target, "#{jem.name}.gemspec")
     template "README.md.tt", File.join(target, "README.md")
 
-    logger.debug "create repo"
+    logger.info "create repo"
     repo = GithubService.create_repository(jem.name)
-    logger.debug "add collab"
+    logger.info "add collab"
     GithubService.add_collaborator(repo.full_name, jem.creator.login)
-    logger.debug "push repo"
+    logger.info "push repo"
     GithubService.push_local_repo("jems/#{jem.name}", repo.ssh_url)
 
     Dir.chdir(target) do
