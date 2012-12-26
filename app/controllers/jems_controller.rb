@@ -1,4 +1,5 @@
 class JemsController < ApplicationController
+  before_filter :authorize, except: [:index]
   # GET /jems
   # GET /jems.json
   def index
