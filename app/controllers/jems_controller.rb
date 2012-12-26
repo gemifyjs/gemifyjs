@@ -46,9 +46,7 @@ class JemsController < ApplicationController
     respond_to do |format|
       if @jem.save
         begin
-          logger.info "save"
-          %x[RAILS_ENV=#{Rails.env.to_s} bundle exec rails generate gemify #{@jem.id}]
-          logger.info "RAILS_ENV=#{Rails.env.to_s} bundle exec rails generate gemify #{@jem.id}"          
+          `RAILS_ENV=#{Rails.env.to_s} bundle exec rails generate gemify #{@jem.id}`
         rescue Exception => e
           logger.info "#{e.inspect}"
         end
