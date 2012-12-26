@@ -45,8 +45,7 @@ class JemsController < ApplicationController
 
     respond_to do |format|
       if @jem.save
-        %x[bundle exec rails generate gemify #{@jem.id} RAILS_ENV=#{Rails.env.to_s}]
-        # rails generate gemfying @jem.id
+        %x[RAILS_ENV=#{Rails.env.to_s} bundle exec rails generate gemify #{@jem.id}]
         format.html { redirect_to @jem, notice: 'Jem was successfully created.' }
         format.json { render json: @jem, status: :created, location: @jem }
       else
